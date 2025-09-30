@@ -29,11 +29,9 @@ jobs:
 
       - name: Run linter (pylint)
         run: |
-          source env/bin/activate
-          pylint $(git ls-files '*.py')
+          make lint
 
       - name: Test with pytest
         run: |
-          source env/bin/activate
-          pytest -vvx tests
+          make test
 
