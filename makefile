@@ -24,6 +24,6 @@ wsjgainers.csv: wsjgainers.html
 lint:
 	pylint bin/normalize.py
 test:
-	pytest -vv tests/
+	. env/bin/activate; pytest -vv tests/
 
 linttest: lint test
