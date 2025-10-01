@@ -25,20 +25,13 @@ jobs:
           python3 -m venv env
           source env/bin/activate
           pip install --upgrade pip
-          if [[ "${{ matrix.python-version }}" == "3.13" ]]; then
-            echo "Skipping pandas/numpy for Python 3.13"
-            pip install html5lib==1.1 beautifulsoup4==4.12.3 pylint==3.3.1 pytest==8.3.3 lxml==5.3.0
-          else
-            make update
-          fi
+          pip install -r requirements.txt
 
       - name: Run linter (pylint)
-        if: matrix.python-version == '3.12'
         run: |
           make lint
 
       - name: Test with pytest
         run: |
           make test
-
 
