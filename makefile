@@ -27,3 +27,15 @@ test:
 	. env/bin/activate; pytest -vv tests/
 
 linttest: lint test
+
+ygainers_tstamp: ygainers.html
+	. env/bin/activate; python -c "import pandas as pd; raw = pd.read_html('ygainers.html'); raw[0].to_csv('ygainers.csv')"
+	mv ygainers.csv ygainers_`date +"%Y%m%d_%H%M%S"`.csv
+
+wsjgainers_tstamp: wsjgainers.html
+	. env/bin/activate; python -c "import pandas as pd; raw = pd.read_html('wsjgainers.html'); raw[0].to_csv('wsjgainers.csv')"
+	mv wsjgainers.csv wsjgainers_`date +"%Y%m%d_%H%M%S"`.csv
+
+clean:
+	rm -f ygainers.html wsjgainers.html ygainers.csv wsjgainers.csv
+
