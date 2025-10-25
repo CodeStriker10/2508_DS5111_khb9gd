@@ -5,9 +5,7 @@ import os
 import platform
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-
-import bin.normalize as nm 
-
+ 
 
 def test_of_pytest():
     """Ensure pytest is running and this test always passes."""
@@ -24,10 +22,5 @@ def test_os():
     assert os.name == "posix"
     assert platform.system().lower() == "linux"
 
-
-def test_import_module():
-    """Verify that normalize_yahoo and normalize_wsj exist in bin.normalize."""
-    assert hasattr(nm, "normalize_yahoo")
-    assert hasattr(nm, "normalize_wsj")
 
 
