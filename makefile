@@ -22,7 +22,7 @@ wsjgainers.csv: wsjgainers.html
 
 
 lint:
-	. env/bin/activate; pylint bin/normalize.py
+	. env/bin/activate; pylint bin/gainers/*.py
 test:
 	. env/bin/activate; pytest -vv tests/
 
