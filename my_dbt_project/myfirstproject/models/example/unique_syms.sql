@@ -2,7 +2,9 @@
     materialized='table'
 ) }}
 
-SELECT DISTINCT symbol
+SELECT 
+    symbol,
+    COUNT(*) as record_count
 FROM (
     -- WSJ Tables (extract symbol from parentheses in INDEX_1)
     SELECT REGEXP_SUBSTR(INDEX_1, '\\(([A-Z]+)\\)', 1, 1, 'e', 1) AS symbol 
@@ -38,4 +40,5 @@ FROM (
     SELECT SYMBOL FROM DS2508.KHB9GD.YGAINERS_20251117_160119
 )
 WHERE symbol IS NOT NULL
-ORDER BY symbol
+GROUP BY symbol
+ORDER BY record_count DESC, symbol
